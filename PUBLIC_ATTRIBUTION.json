@@ -4,6 +4,6 @@
   "paper_authors": ["Jiangwei Xu\u0065", "Zhida Qin", "Yuda Bi"],
   "release_title": "Beyond Multimodal Gain: Minimal Reproduction Package",
   "version": "1.9.0",
-  "repository": "https://github.com/Jiangwei-Xue/01_beyond-multimodal-gain-reproducibility",
+  "repository": "https://github.com/Jiangwei-Xue/paper-01-beyond-multimodal-gain-reproducibility",
   "license_scope_document": "LICENSE"
 }
