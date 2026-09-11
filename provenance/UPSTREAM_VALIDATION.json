@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "input_equivalence": {
+    "status": "PASS",
+    "absolute_tolerance": 1e-12,
+    "relative_tolerance": 1e-12,
+    "participant_comparison": "row-wise cluster membership up to a bijective relabeling",
+    "files": [
+      {
+        "file": "meld_reanalysis_continuous_features.csv",
+        "rows": 2330,
+        "compared_cells": 205040,
+        "max_absolute_numeric_difference": 0,
+        "reference_sha256": "84e171f418f9b67ab961de1a9adec36cdfc8121f836ad0bd26a0c954167b1f9e",
+        "rebuilt_sha256": "84e171f418f9b67ab961de1a9adec36cdfc8121f836ad0bd26a0c954167b1f9e",
+        "byte_identical": true,
+        "scientific_mismatches": 0
+      },
+      {
+        "file": "meld_reanalysis_pairs.csv",
+        "rows": 2330,
+        "compared_cells": 27960,
+        "max_absolute_numeric_difference": 0,
+        "reference_sha256": "33252ff4493c9b33d918943c498b75024aec4441a68439f18085c451318c23c7",
+        "rebuilt_sha256": "33252ff4493c9b33d918943c498b75024aec4441a68439f18085c451318c23c7",
+        "byte_identical": true,
+        "scientific_mismatches": 0
+      },
+      {
+        "file": "nhanes_analysis_public.csv",
+        "rows": 6565,
+        "compared_cells": 85345,
+        "max_absolute_numeric_difference": 0,
+        "reference_sha256": "bd1442957b21efde65cdbbb8cfad1042d6b72eeaa6df1396ec9b5106797119e9",
+        "rebuilt_sha256": "bd1442957b21efde65cdbbb8cfad1042d6b72eeaa6df1396ec9b5106797119e9",
+        "byte_identical": true,
+        "scientific_mismatches": 0
+      },
+      {
+        "file": "crosscheck_pairs_public.csv",
+        "rows": 5607,
+        "compared_cells": 33642,
+        "max_absolute_numeric_difference": 0,
+        "reference_sha256": "7c9950d9854152af71b4a1ff3ee6f88d82be2569e6579c253589166470bc497a",
+        "rebuilt_sha256": "24c8e0ecad670abd9d38421ff4ae4f4a20363eab46f4f11cbb0de7e3b3033040",
+        "byte_identical": false,
+        "scientific_mismatches": 0
+      }
+    ],
+    "failures": []
+  },
+  "downstream_comparators": [
+    "simulation",
+    "meld",
+    "empirical",
+    "floor_diagnostics"
+  ],
+  "input_source": "independently rebuilt tables; released inputs used only for validation",
+  "release": "bmg-minimal-reproduction-v1.9.0",
+  "source_validation": {
+    "status": "PASS",
+    "files": 13,
+    "mode": "frozen local source cache"
+  },
+  "small_source_download_test": {
+    "status": "PASS",
+    "files": 9
+  },
+  "large_archive_redownload_test": {
+    "status": "NOT_VERIFIED",
+    "reason": "Existing extracted source objects were hash-verified and reused; the three large archive transfers were not repeated."
+  },
+  "kernel_smoke": {
+    "status": "PASS",
+    "valid_days": 2,
+    "wear_minutes": [
+      1370,
+      1369
+    ],
+    "counts": [
+      201230,
+      196287
+    ]
+  },
+  "helper_tests": {
+    "status": "PASS",
+    "tests": 4
+  },
+  "result_comparisons": {
+    "simulation_numeric_cells": 48,
+    "meld_numeric_cells": 111,
+    "empirical_identical_files": 10,
+    "floor_identical_files": 12
+  }
+}

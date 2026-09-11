@@ -1,0 +1,582 @@
+{
+  "schema_version": 1,
+  "public_release_id": "bmg-minimal-reproduction-v1.9.0",
+  "package_title": "Beyond Multimodal Gain: Minimal Reproduction Package",
+  "reproduction_level": "compact-input downstream replay plus optional frozen-public-source reconstruction",
+  "experiments": [
+    "simulation-population",
+    "simulation-finite-sample",
+    "nhanes-observable-witness",
+    "nhanes-boundary-and-floor-diagnostics",
+    "crosscheck-observable-witness",
+    "meld-primary-and-secondary"
+  ],
+  "entry_points": {
+    "package_validation": "python3 analysis/verify_static_package.py --root .",
+    "full_downstream_reproduction": "TZ=UTC make verify-full",
+    "archive_validation": "python3 tools/VERIFY_ARCHIVE.py verify --archive <ARCHIVE_PATH> --public",
+    "rebuild_inputs": ".venv-meld/bin/python upstream/rebuild_inputs.py --offline",
+    "upstream_to_paper": ".venv-meld/bin/python upstream/run_from_rebuilt.py"
+  },
+  "result_map": "manuscript_binding/PAPER_RESULTS_MAP.json",
+  "experiment_manifest": "config/EXPERIMENT_MANIFEST.json",
+  "public_artifact_manifest": "provenance/PUBLIC_RELEASE_MANIFEST.jsonl",
+  "scientific_boundaries": [
+    "MELD starts from published MM-Align sequence features; neural extraction from raw audio/video is not covered.",
+    "NHANES PAXRAW aggregation and joins to public survey/mortality files are executable after external source acquisition.",
+    "CrossCheck starts from the public cleaned daily table; raw phone-sensor cleaning is not covered.",
+    "Large upstream files are downloaded separately and are not redistributed in this archive."
+  ],
+  "allowlist": [
+    {
+      "source": ".gitattributes",
+      "target": ".gitattributes",
+      "role": "git-metadata"
+    },
+    {
+      "source": ".gitignore",
+      "target": ".gitignore",
+      "role": "git-metadata"
+    },
+    {
+      "source": "Makefile",
+      "target": "Makefile",
+      "role": "reproduction-interface"
+    },
+    {
+      "source": "README.md",
+      "target": "README.md",
+      "role": "release-documentation"
+    },
+    {
+      "source": "LICENSE",
+      "target": "LICENSE",
+      "role": "license-scope"
+    },
+    {
+      "source": "LICENSES/MIT.txt",
+      "target": "LICENSES/MIT.txt",
+      "role": "software-license"
+    },
+    {
+      "source": "LICENSES/CC-BY-4.0.txt",
+      "target": "LICENSES/CC-BY-4.0.txt",
+      "role": "documentation-license"
+    },
+    {
+      "source": "CITATION.cff",
+      "target": "CITATION.cff",
+      "role": "citation-metadata"
+    },
+    {
+      "source": "PUBLIC_ATTRIBUTION.json",
+      "target": "PUBLIC_ATTRIBUTION.json",
+      "role": "public-attribution"
+    },
+    {
+      "source": "PUBLIC_ENVIRONMENT.json",
+      "target": "PUBLIC_ENVIRONMENT.json",
+      "role": "environment-record"
+    },
+    {
+      "source": "PUBLIC_RELEASE_CONFIG.json",
+      "target": "PUBLIC_RELEASE_CONFIG.json",
+      "role": "scientific-release-config"
+    },
+    {
+      "source": "paper/Beyond_Multimodal_Gain.pdf",
+      "target": "paper/Beyond_Multimodal_Gain.pdf",
+      "role": "reference-manuscript"
+    },
+    {
+      "source": "requirements.txt",
+      "target": "requirements.txt",
+      "role": "meld-environment-specification"
+    },
+    {
+      "source": "requirements-lock.txt",
+      "target": "requirements-lock.txt",
+      "role": "meld-environment-lock"
+    },
+    {
+      "source": "requirements-simulation.txt",
+      "target": "requirements-simulation.txt",
+      "role": "simulation-environment-specification"
+    },
+    {
+      "source": "requirements-simulation-lock.txt",
+      "target": "requirements-simulation-lock.txt",
+      "role": "simulation-environment-lock"
+    },
+    {
+      "source": "analysis/build_hash_manifest.py",
+      "target": "analysis/build_hash_manifest.py",
+      "role": "provenance-code"
+    },
+    {
+      "source": "analysis/build_simulation_manifest.py",
+      "target": "analysis/build_simulation_manifest.py",
+      "role": "provenance-code"
+    },
+    {
+      "source": "analysis/result_io.py",
+      "target": "analysis/result_io.py",
+      "role": "verification-code"
+    },
+    {
+      "source": "analysis/run_meld_reproduction.py",
+      "target": "analysis/run_meld_reproduction.py",
+      "role": "analysis-code"
+    },
+    {
+      "source": "analysis/run_simulation.py",
+      "target": "analysis/run_simulation.py",
+      "role": "analysis-code"
+    },
+    {
+      "source": "analysis/empirical_common.R",
+      "target": "analysis/empirical_common.R",
+      "role": "analysis-code"
+    },
+    {
+      "source": "analysis/run_empirical_reproduction.R",
+      "target": "analysis/run_empirical_reproduction.R",
+      "role": "analysis-code"
+    },
+    {
+      "source": "analysis/run_nhanes_floor_diagnostics.R",
+      "target": "analysis/run_nhanes_floor_diagnostics.R",
+      "role": "analysis-code"
+    },
+    {
+      "source": "analysis/verify_empirical_rerun.R",
+      "target": "analysis/verify_empirical_rerun.R",
+      "role": "verification-code"
+    },
+    {
+      "source": "analysis/verify_meld_rerun.py",
+      "target": "analysis/verify_meld_rerun.py",
+      "role": "verification-code"
+    },
+    {
+      "source": "analysis/verify_simulation_rerun.py",
+      "target": "analysis/verify_simulation_rerun.py",
+      "role": "verification-code"
+    },
+    {
+      "source": "analysis/verify_static_package.py",
+      "target": "analysis/verify_static_package.py",
+      "role": "verification-code"
+    },
+    {
+      "source": "config/meld_reproduction.json",
+      "target": "config/meld_reproduction.json",
+      "role": "analysis-config"
+    },
+    {
+      "source": "config/simulation.json",
+      "target": "config/simulation.json",
+      "role": "analysis-config"
+    },
+    {
+      "source": "config/nhanes_crosscheck_reproduction.R",
+      "target": "config/nhanes_crosscheck_reproduction.R",
+      "role": "analysis-config"
+    },
+    {
+      "source": "config/EXPERIMENT_MANIFEST.json",
+      "target": "config/EXPERIMENT_MANIFEST.json",
+      "role": "experiment-manifest"
+    },
+    {
+      "source": "input_data/meld_reanalysis_continuous_features.csv",
+      "target": "input_data/meld_reanalysis_continuous_features.csv",
+      "role": "derived-continuous-data"
+    },
+    {
+      "source": "input_data/meld_reanalysis_continuous_metadata.json",
+      "target": "input_data/meld_reanalysis_continuous_metadata.json",
+      "role": "input-provenance"
+    },
+    {
+      "source": "input_data/meld_reanalysis_pairs.csv",
+      "target": "input_data/meld_reanalysis_pairs.csv",
+      "role": "derived-discrete-data"
+    },
+    {
+      "source": "input_data/meld_reanalysis_pairs_metadata.json",
+      "target": "input_data/meld_reanalysis_pairs_metadata.json",
+      "role": "input-provenance"
+    },
+    {
+      "source": "input_data/nhanes_analysis_public.csv",
+      "target": "input_data/nhanes_analysis_public.csv",
+      "role": "derived-discrete-data"
+    },
+    {
+      "source": "input_data/crosscheck_pairs_public.csv",
+      "target": "input_data/crosscheck_pairs_public.csv",
+      "role": "derived-discrete-data"
+    },
+    {
+      "source": "canonical_results/README.md",
+      "target": "canonical_results/README.md",
+      "role": "results-documentation"
+    },
+    {
+      "source": "canonical_results/meld/environment.txt",
+      "target": "canonical_results/meld/environment.txt",
+      "role": "environment-record"
+    },
+    {
+      "source": "canonical_results/meld/folds/model_based_tuning_manifest.json",
+      "target": "canonical_results/meld/folds/model_based_tuning_manifest.json",
+      "role": "fold-manifest"
+    },
+    {
+      "source": "canonical_results/meld/folds/primary_fold_and_tuning_manifest.json",
+      "target": "canonical_results/meld/folds/primary_fold_and_tuning_manifest.json",
+      "role": "fold-manifest"
+    },
+    {
+      "source": "canonical_results/meld/general_T_model_based_intervals.png",
+      "target": "canonical_results/meld/general_T_model_based_intervals.png",
+      "role": "figure"
+    },
+    {
+      "source": "canonical_results/meld/general_T_model_based_sharp.csv",
+      "target": "canonical_results/meld/general_T_model_based_sharp.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/meld/manifest.json",
+      "target": "canonical_results/meld/manifest.json",
+      "role": "run-manifest"
+    },
+    {
+      "source": "canonical_results/meld/oof_predictions.csv",
+      "target": "canonical_results/meld/oof_predictions.csv",
+      "role": "oof-predictions"
+    },
+    {
+      "source": "canonical_results/meld/primary_predictive_gain.csv",
+      "target": "canonical_results/meld/primary_predictive_gain.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/meld/primary_predictive_gain.png",
+      "target": "canonical_results/meld/primary_predictive_gain.png",
+      "role": "figure"
+    },
+    {
+      "source": "canonical_results/meld/representation_ladder.csv",
+      "target": "canonical_results/meld/representation_ladder.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/meld/representation_ladder.png",
+      "target": "canonical_results/meld/representation_ladder.png",
+      "role": "figure"
+    },
+    {
+      "source": "canonical_results/meld/same_speaker_subgroup.csv",
+      "target": "canonical_results/meld/same_speaker_subgroup.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/meld/split_stability.csv",
+      "target": "canonical_results/meld/split_stability.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/simulation/data/simulation_coverage.csv",
+      "target": "canonical_results/simulation/data/simulation_coverage.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/simulation/data/simulation_population.csv",
+      "target": "canonical_results/simulation/data/simulation_population.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/simulation/figures/simulation_coverage.png",
+      "target": "canonical_results/simulation/figures/simulation_coverage.png",
+      "role": "figure"
+    },
+    {
+      "source": "canonical_results/simulation/figures/simulation_identification.png",
+      "target": "canonical_results/simulation/figures/simulation_identification.png",
+      "role": "figure"
+    },
+    {
+      "source": "canonical_results/simulation/figures/simulation_stability.png",
+      "target": "canonical_results/simulation/figures/simulation_stability.png",
+      "role": "figure"
+    },
+    {
+      "source": "canonical_results/simulation/manifest.json",
+      "target": "canonical_results/simulation/manifest.json",
+      "role": "run-manifest"
+    },
+    {
+      "source": "canonical_results/empirical/environment.txt",
+      "target": "canonical_results/empirical/environment.txt",
+      "role": "environment-record"
+    },
+    {
+      "source": "canonical_results/empirical/nhanes/witness_results.csv",
+      "target": "canonical_results/empirical/nhanes/witness_results.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/empirical/nhanes/witness_bootstrap_replicates.csv",
+      "target": "canonical_results/empirical/nhanes/witness_bootstrap_replicates.csv",
+      "role": "bootstrap-replicates"
+    },
+    {
+      "source": "canonical_results/empirical/nhanes/sharp_sensitivity.csv",
+      "target": "canonical_results/empirical/nhanes/sharp_sensitivity.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/empirical/nhanes/compatibility_bootstrap.csv",
+      "target": "canonical_results/empirical/nhanes/compatibility_bootstrap.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/empirical/nhanes/delta_max.csv",
+      "target": "canonical_results/empirical/nhanes/delta_max.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/empirical/crosscheck/witness_results.csv",
+      "target": "canonical_results/empirical/crosscheck/witness_results.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/empirical/crosscheck/witness_bootstrap_replicates.csv",
+      "target": "canonical_results/empirical/crosscheck/witness_bootstrap_replicates.csv",
+      "role": "bootstrap-replicates"
+    },
+    {
+      "source": "canonical_results/empirical/crosscheck/sharp_sensitivity.csv",
+      "target": "canonical_results/empirical/crosscheck/sharp_sensitivity.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/empirical/crosscheck/compatibility_bootstrap.csv",
+      "target": "canonical_results/empirical/crosscheck/compatibility_bootstrap.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/empirical/crosscheck/delta_max.csv",
+      "target": "canonical_results/empirical/crosscheck/delta_max.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/environment.txt",
+      "target": "canonical_results/floor_diagnostics/environment.txt",
+      "role": "environment-record"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/canonical_boundary/canonical_compatibility_region.csv",
+      "target": "canonical_results/floor_diagnostics/canonical_boundary/canonical_compatibility_region.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/canonical_boundary/canonical_compatibility_diagonal.csv",
+      "target": "canonical_results/floor_diagnostics/canonical_boundary/canonical_compatibility_diagonal.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/canonical_boundary/context_l1_radii.csv",
+      "target": "canonical_results/floor_diagnostics/canonical_boundary/context_l1_radii.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/canonical_boundary/protocol_record.csv",
+      "target": "canonical_results/floor_diagnostics/canonical_boundary/protocol_record.csv",
+      "role": "protocol-record"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/positive_floor_sensitivity/representation_summary.csv",
+      "target": "canonical_results/floor_diagnostics/positive_floor_sensitivity/representation_summary.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/positive_floor_sensitivity/sharp_sensitivity.csv",
+      "target": "canonical_results/floor_diagnostics/positive_floor_sensitivity/sharp_sensitivity.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/positive_floor_sensitivity/compatibility_bootstrap.csv",
+      "target": "canonical_results/floor_diagnostics/positive_floor_sensitivity/compatibility_bootstrap.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/positive_floor_sensitivity/delta_max.csv",
+      "target": "canonical_results/floor_diagnostics/positive_floor_sensitivity/delta_max.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/positive_floor_sensitivity/selected_diagonal_floor_table.csv",
+      "target": "canonical_results/floor_diagnostics/positive_floor_sensitivity/selected_diagonal_floor_table.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/positive_floor_sensitivity/paper_selected_floor_rows.csv",
+      "target": "canonical_results/floor_diagnostics/positive_floor_sensitivity/paper_selected_floor_rows.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/positive_floor_sensitivity/cycle_point_diagnostics.csv",
+      "target": "canonical_results/floor_diagnostics/positive_floor_sensitivity/cycle_point_diagnostics.csv",
+      "role": "metric"
+    },
+    {
+      "source": "canonical_results/floor_diagnostics/positive_floor_sensitivity/protocol_record.csv",
+      "target": "canonical_results/floor_diagnostics/positive_floor_sensitivity/protocol_record.csv",
+      "role": "protocol-record"
+    },
+    {
+      "source": "manuscript_binding/PAPER_RESULTS_MAP.json",
+      "target": "manuscript_binding/PAPER_RESULTS_MAP.json",
+      "role": "paper-result-binding"
+    },
+    {
+      "source": "manuscript_binding/LOCAL_PAPER_BINDING.json",
+      "target": "manuscript_binding/LOCAL_PAPER_BINDING.json",
+      "role": "paper-version-binding"
+    },
+    {
+      "source": "docs/CONTAMINATION_LEAKAGE_REPORT.md",
+      "target": "docs/CONTAMINATION_LEAKAGE_REPORT.md",
+      "role": "audit-report"
+    },
+    {
+      "source": "docs/DATA_LICENSE_AND_PROVENANCE.md",
+      "target": "docs/DATA_LICENSE_AND_PROVENANCE.md",
+      "role": "data-documentation"
+    },
+    {
+      "source": "docs/EXPERIMENT_DESIGN.md",
+      "target": "docs/EXPERIMENT_DESIGN.md",
+      "role": "experiment-design"
+    },
+    {
+      "source": "docs/HASH_INTERLOCK_REPORT.md",
+      "target": "docs/HASH_INTERLOCK_REPORT.md",
+      "role": "audit-report"
+    },
+    {
+      "source": "docs/MELD_METHOD_SPEC.md",
+      "target": "docs/MELD_METHOD_SPEC.md",
+      "role": "method-documentation"
+    },
+    {
+      "source": "docs/NHANES_CROSSCHECK_METHOD_SPEC.md",
+      "target": "docs/NHANES_CROSSCHECK_METHOD_SPEC.md",
+      "role": "method-documentation"
+    },
+    {
+      "source": "docs/REPRODUCTION_PROTOCOL.md",
+      "target": "docs/REPRODUCTION_PROTOCOL.md",
+      "role": "reproduction-protocol"
+    },
+    {
+      "source": "docs/RELEASE_AUDIT.md",
+      "target": "docs/RELEASE_AUDIT.md",
+      "role": "release-audit"
+    },
+    {
+      "source": "docs/VALIDATION_APPLICABILITY.md",
+      "target": "docs/VALIDATION_APPLICABILITY.md",
+      "role": "validation-scope"
+    },
+    {
+      "source": "provenance/SHA256SUMS.txt",
+      "target": "provenance/SHA256SUMS.txt",
+      "role": "hash-manifest"
+    },
+    {
+      "source": "provenance/PUBLIC_RELEASE_MANIFEST.jsonl",
+      "target": "provenance/PUBLIC_RELEASE_MANIFEST.jsonl",
+      "role": "hash-manifest"
+    },
+    {
+      "source": "third_party/MELD_LICENSE_GPL-3.0.txt",
+      "target": "third_party/MELD_LICENSE_GPL-3.0.txt",
+      "role": "third-party-license"
+    },
+    {
+      "source": "upstream/processing_config.R",
+      "target": "upstream/processing_config.R",
+      "role": "upstream-reproduction"
+    },
+    {
+      "source": "upstream/run_from_rebuilt.py",
+      "target": "upstream/run_from_rebuilt.py",
+      "role": "upstream-reproduction"
+    },
+    {
+      "source": "upstream/rebuild_meld.py",
+      "target": "upstream/rebuild_meld.py",
+      "role": "upstream-reproduction"
+    },
+    {
+      "source": "upstream/verify_inputs.py",
+      "target": "upstream/verify_inputs.py",
+      "role": "upstream-reproduction"
+    },
+    {
+      "source": "upstream/rebuild_inputs.py",
+      "target": "upstream/rebuild_inputs.py",
+      "role": "upstream-reproduction"
+    },
+    {
+      "source": "upstream/test_pax_kernel.R",
+      "target": "upstream/test_pax_kernel.R",
+      "role": "upstream-reproduction"
+    },
+    {
+      "source": "upstream/fetch_sources.py",
+      "target": "upstream/fetch_sources.py",
+      "role": "upstream-reproduction"
+    },
+    {
+      "source": "upstream/meld_transforms.py",
+      "target": "upstream/meld_transforms.py",
+      "role": "upstream-reproduction"
+    },
+    {
+      "source": "upstream/pax_nci_aggregate.c",
+      "target": "upstream/pax_nci_aggregate.c",
+      "role": "upstream-reproduction"
+    },
+    {
+      "source": "upstream/sources.json",
+      "target": "upstream/sources.json",
+      "role": "upstream-reproduction"
+    },
+    {
+      "source": "upstream/build_empirical_inputs.R",
+      "target": "upstream/build_empirical_inputs.R",
+      "role": "upstream-reproduction"
+    },
+    {
+      "source": "upstream/test_upstream.py",
+      "target": "upstream/test_upstream.py",
+      "role": "upstream-reproduction"
+    },
+    {
+      "source": "docs/UPSTREAM_REPRODUCTION.md",
+      "target": "docs/UPSTREAM_REPRODUCTION.md",
+      "role": "reproduction-protocol"
+    },
+    {
+      "source": "provenance/UPSTREAM_VALIDATION.json",
+      "target": "provenance/UPSTREAM_VALIDATION.json",
+      "role": "scientific-validation"
+    }
+  ]
+}

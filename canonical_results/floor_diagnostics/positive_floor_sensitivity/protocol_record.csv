@@ -1,0 +1,2 @@
+"protocol_version","freeze_date","status","boundary","seed","bootstrap_replicates"
+"nhanes-positive-floor-representation-sensitivity-v1","2026-09-05","post-canonical exploratory sensitivity analysis","These representations were specified after inspecting the canonical sparse-cell result. They diagnose representation sensitivity and do not replace the frozen 4M x 4T x 4C primary analysis. No pseudocount or probability smoothing is used.",2026090502,1000

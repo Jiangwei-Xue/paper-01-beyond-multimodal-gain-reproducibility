@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "run_id": "bb7cb354-6318-483f-8b74-7317a990d4d6",
+  "created_utc": "2026-09-01T06:37:52.563990+00:00",
+  "task": "MELD next-turn official sentiment (3-class) with continuous low-dimensional source-turn features",
+  "n_pairs": 2330,
+  "n_dialogues": 268,
+  "row_alignment": "features are from source turn t; Y and same-speaker relation refer to next turn t+1",
+  "feature_dimensions": {
+    "text_svd": 32,
+    "audio_pca": 16,
+    "visual_pca": 32,
+    "total": 80
+  },
+  "feature_precision": "float32 transformed values serialized with 8 significant decimal digits",
+  "fit_policy": "TF-IDF/SVD/PCA/scalers fitted on train only without train/test outcome labels; test transformed once",
+  "transforms": {
+    "text": "TF-IDF(1-2gram,min_df=2,max_features=20000,sublinear_tf) -> TruncatedSVD(32) -> StandardScaler",
+    "audio": "StandardScaler -> PCA(16) -> StandardScaler",
+    "visual": "StandardScaler -> randomized PCA(32) -> StandardScaler"
+  },
+  "seed": 20260901,
+  "y_mapping": {
+    "negative": 0,
+    "neutral": 1,
+    "positive": 2
+  },
+  "c_definition": "source speaker is one of six major characters x next turn same speaker",
+  "y_counts": {
+    "negative": 750,
+    "neutral": 1117,
+    "positive": 463
+  },
+  "c_counts": {
+    "major=0|same=0": 337,
+    "major=1|same=1": 492,
+    "major=1|same=0": 1428,
+    "major=0|same=1": 73
+  },
+  "numpy_version": "2.5.2",
+  "scikit_learn_version": "1.9.0",
+  "input_sha256": {
+    "train_compact": "2fc8b0f22e21453fcb74fd5f473ae9af95e5a5991bba4a65b997ecb33ebd49f7",
+    "test_compact": "a76bc68d9a6fdb7ebecb9317e9694b76340efc3e601f01ecf7ff44d7c7347d94",
+    "test_csv": "8d37103938f7067600839fe29d5a114a6cd1bcdafb75bec101e06464c5006888"
+  },
+  "output": {
+    "name": "meld_reanalysis_continuous_features.csv",
+    "bytes": 2229706,
+    "sha256": "84e171f418f9b67ab961de1a9adec36cdfc8121f836ad0bd26a0c954167b1f9e"
+  },
+  "content_boundary": "The table contains public MELD indices and low-dimensional transformed features; transcripts, media, and pre-reduction feature arrays are not included."
+}

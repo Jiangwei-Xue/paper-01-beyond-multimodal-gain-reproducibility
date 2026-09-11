@@ -1,0 +1,2 @@
+"n_pairs","participants","plugin_witness_bits","bootstrap_bias_corrected_bits","ci_lower","ci_upper","bootstrap_replicates","conditional_permutation_p","permutation_replicates"
+5607,60,0.0103713623683668,0.00120605631516922,-0.011820868023232,0.0103710955174686,1000,0.027972027972028,1000

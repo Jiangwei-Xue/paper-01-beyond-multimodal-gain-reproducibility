@@ -1,0 +1,51 @@
+# Layered licensing notice
+
+Copyright (c) 2026 Beyond Multimodal Gain contributors.
+
+This repository is not governed by one blanket license. The following
+path-level terms apply.
+
+## MIT License
+
+The MIT License applies to:
+
+- `analysis/`
+- `upstream/` executable code and configuration
+- `tools/`
+- `config/`
+- `Makefile`
+- `requirements*.txt`
+- `.gitignore` and `.gitattributes`
+
+The full MIT text is in `LICENSES/MIT.txt`.
+
+## Creative Commons Attribution 4.0 International
+
+CC BY 4.0 applies, to the extent the author holds the relevant rights, to:
+
+- `README.md`
+- `docs/`, except third-party license notices or quoted upstream material
+- `canonical_results/` author-generated result tables and figures
+- `manuscript_binding/`
+- `provenance/` author-generated reports and manifests
+- `CITATION.cff` and `PUBLIC_ATTRIBUTION.json`
+- generated release metadata, to the extent copyright applies
+
+The license reference is in `LICENSES/CC-BY-4.0.txt`.
+
+## Manuscript
+
+The manuscript PDF at `paper/Beyond_Multimodal_Gain.pdf` is included for
+reference and result binding. All manuscript rights are retained by its
+authors. Neither the MIT License nor CC BY 4.0 applies to that PDF unless a
+separate notice expressly says otherwise.
+
+## Third-party material and public-source data
+
+No new license is granted for `input_data/`, `third_party/`, third-party
+libraries, upstream datasets, or model outputs. Their original licenses,
+terms of use, data-use conditions, and applicable law control. Compact or
+transformed data do not automatically become relicensed under CC BY 4.0.
+
+If a file-specific or upstream notice conflicts with this mapping, that more
+specific notice controls.

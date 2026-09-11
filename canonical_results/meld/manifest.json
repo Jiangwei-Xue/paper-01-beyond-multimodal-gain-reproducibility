@@ -1,0 +1,77 @@
+{
+  "code_sha256": "df9b8e4200da25896e2642d0bdccbc65794965499bc1b37ed4156aefe339506f",
+  "config_sha256": "f240137004ca3c4efa7ab7842aebc8b5d793403a44f81523368e71da468a5723",
+  "environment": {
+    "numpy": "2.5.2",
+    "python": "3.14.5",
+    "reproduction_timezone": "UTC",
+    "scikit_learn": "1.9.0"
+  },
+  "input_sha256": {
+    "meld_reanalysis_continuous_features.csv": "84e171f418f9b67ab961de1a9adec36cdfc8121f836ad0bd26a0c954167b1f9e",
+    "meld_reanalysis_pairs.csv": "33252ff4493c9b33d918943c498b75024aec4441a68439f18085c451318c23c7"
+  },
+  "method_version": "meld-continuous-nested-cv-v1",
+  "n_dialogues": 268,
+  "n_pairs": 2330,
+  "outcome_counts": {
+    "0": 750,
+    "1": 1117,
+    "2": 463
+  },
+  "outputs": {
+    "environment.txt": {
+      "sha256": "03c06d25e7949ca9a846f1ed4d1dd22ab31dbd180694fd2cd92422b2e3b3681d",
+      "size_bytes": 328
+    },
+    "folds/model_based_tuning_manifest.json": {
+      "sha256": "ad11aca7161bc4c43ff4d7fb19889df17e4d97a18fd8a46790f0371730430fe4",
+      "size_bytes": 13189
+    },
+    "folds/primary_fold_and_tuning_manifest.json": {
+      "sha256": "3754e2085832a0715deb0a5da5b4f43fa8983753a0af82130ef8a4619a51c385",
+      "size_bytes": 33290
+    },
+    "general_T_model_based_intervals.png": {
+      "sha256": "aec2a84fc626094f8a23add9510538b79a735c218fe0e17311cfb6d4a79a388d",
+      "size_bytes": 20663
+    },
+    "general_T_model_based_sharp.csv": {
+      "sha256": "872794513a5577c93d0de31edda6005abf9fe757af0ed591a039ac62fe164ef7",
+      "size_bytes": 747
+    },
+    "oof_predictions.csv": {
+      "sha256": "7e8eb3f38e52cc372e2e644183067cb92967e351033596374d060c65548cdf61",
+      "size_bytes": 195994
+    },
+    "primary_predictive_gain.csv": {
+      "sha256": "c1d47808b0df55cbd3fa3e883832956a62aad22c2cfc3c12fe26c06c9384aa19",
+      "size_bytes": 378
+    },
+    "primary_predictive_gain.png": {
+      "sha256": "22d54edbda49f43644701f90466af155e54be1f8f0472763a91aa5e2828b7605",
+      "size_bytes": 29304
+    },
+    "representation_ladder.csv": {
+      "sha256": "d37f2b96a20fa18f97820c48c91080768460b52915a555d3d48fa16a109e1498",
+      "size_bytes": 932
+    },
+    "representation_ladder.png": {
+      "sha256": "0092b7b8f476b50a5493a9220d865d8dc586311cdc48678f49a6183f37b33dbb",
+      "size_bytes": 55413
+    },
+    "same_speaker_subgroup.csv": {
+      "sha256": "a5c2a361bab4e318672846e54ff8e8e398b5b7858a1bf49f708c4f4d691e4d74",
+      "size_bytes": 308
+    },
+    "split_stability.csv": {
+      "sha256": "2180502509837147280399a25f9c0606f69839267363dfe25573ee4349750b59",
+      "size_bytes": 580
+    }
+  },
+  "run_id": "meld-realdata-reproduction-20260901-v1",
+  "same_speaker_pairs": 565,
+  "schema_version": 1,
+  "text_only_oof_log_loss_bits": 1.4958794548451244,
+  "unconditional_outcome_entropy_bits": 1.4981524382468852
+}

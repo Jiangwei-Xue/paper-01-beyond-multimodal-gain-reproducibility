@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "public_release_id": "bmg-minimal-reproduction-v1.9.0",
+  "method_version": "bmg-paper-experiment-map-v1.9.0",
+  "paper_title": "Beyond Multimodal Gain",
+  "included_paper_pdf": "paper/Beyond_Multimodal_Gain.pdf",
+  "included_paper_pdf_sha256": "084eda01edd19e7e73c7b20ee6e51726861ca8f27a38fd93c193c5127b291ed2",
+  "experiments": [
+    {
+      "id": "simulation-population",
+      "paper_locations": ["sections/07_experiments.tex: population simulation", "sections/appendix_experiments.tex: simulation design"],
+      "config": "config/simulation.json",
+      "tables": ["canonical_results/simulation/data/simulation_population.csv"],
+      "figures": [
+        "canonical_results/simulation/figures/simulation_identification.png",
+        "canonical_results/simulation/figures/simulation_stability.png"
+      ],
+      "reported_values": {
+        "witness_bits": 0.00833748713995424,
+        "true_gamma_bits": 0.09990320932867847,
+        "delta_max": 0.8406951883016387,
+        "true_lower_bits": 0.0140394200257975,
+        "true_upper_bits": 0.706906977810749
+      }
+    },
+    {
+      "id": "simulation-finite-sample",
+      "paper_locations": ["sections/07_experiments.tex: Table simulation-coverage and Figure simulation-coverage"],
+      "tables": ["canonical_results/simulation/data/simulation_coverage.csv"],
+      "figures": ["canonical_results/simulation/figures/simulation_coverage.png"],
+      "display_precision_note": "The paper prints RMSE to four decimals and coverage to three decimals."
+    },
+    {
+      "id": "nhanes-observable-witness",
+      "paper_locations": ["sections/07_experiments.tex: Table nhanes-witness"],
+      "tables": [
+        "canonical_results/empirical/nhanes/witness_results.csv",
+        "canonical_results/empirical/nhanes/witness_bootstrap_replicates.csv"
+      ],
+      "config": "config/nhanes_crosscheck_reproduction.R",
+      "input": "input_data/nhanes_analysis_public.csv",
+      "status": "prespecified-primary-and-robustness",
+      "primary_row": "primary outcome, 4 CPM bins"
+    },
+    {
+      "id": "nhanes-canonical-boundary-compatibility",
+      "paper_locations": ["sections/07_experiments.tex: NHANES positive-floor paragraph", "sections/appendix_experiments.tex: NHANES boundary compatibility"],
+      "tables": [
+        "canonical_results/floor_diagnostics/canonical_boundary/canonical_compatibility_region.csv",
+        "canonical_results/floor_diagnostics/canonical_boundary/context_l1_radii.csv"
+      ],
+      "config": "config/nhanes_crosscheck_reproduction.R",
+      "status": "conservative-low-power-outer-screen"
+    },
+    {
+      "id": "nhanes-positive-floor-representation-sensitivity",
+      "paper_locations": ["sections/appendix_experiments.tex: Table nhanes-positive-floor"],
+      "tables": [
+        "canonical_results/floor_diagnostics/positive_floor_sensitivity/paper_selected_floor_rows.csv",
+        "canonical_results/floor_diagnostics/positive_floor_sensitivity/representation_summary.csv"
+      ],
+      "config": "config/nhanes_crosscheck_reproduction.R",
+      "status": "post-canonical-exploratory-representation-sensitivity"
+    },
+    {
+      "id": "crosscheck-observable-witness",
+      "paper_locations": ["sections/07_experiments.tex: CrossCheck longitudinal robustness", "sections/appendix_experiments.tex: Table crosscheck-witness"],
+      "tables": [
+        "canonical_results/empirical/crosscheck/witness_results.csv",
+        "canonical_results/empirical/crosscheck/witness_bootstrap_replicates.csv"
+      ],
+      "config": "config/nhanes_crosscheck_reproduction.R",
+      "input": "input_data/crosscheck_pairs_public.csv",
+      "status": "inconclusive-participant-clustered"
+    },
+    {
+      "id": "meld-primary",
+      "paper_locations": ["sections/07_experiments.tex: Table meld-primary and Figure meld-primary"],
+      "tables": ["canonical_results/meld/primary_predictive_gain.csv"],
+      "figures": ["canonical_results/meld/primary_predictive_gain.png"],
+      "oof": "canonical_results/meld/oof_predictions.csv",
+      "fold_manifest": "canonical_results/meld/folds/primary_fold_and_tuning_manifest.json"
+    },
+    {
+      "id": "meld-split-stability",
+      "paper_locations": ["sections/appendix_experiments.tex: Table meld-splits"],
+      "tables": ["canonical_results/meld/split_stability.csv"]
+    },
+    {
+      "id": "meld-same-speaker",
+      "paper_locations": ["sections/appendix_experiments.tex: Table meld-same-speaker"],
+      "tables": ["canonical_results/meld/same_speaker_subgroup.csv"],
+      "status": "exploratory-unadjusted"
+    },
+    {
+      "id": "meld-representation-ladder",
+      "paper_locations": ["sections/appendix_experiments.tex: Table meld-ladder"],
+      "tables": ["canonical_results/meld/representation_ladder.csv"],
+      "figures": ["canonical_results/meld/representation_ladder.png"],
+      "status": "sensitivity-diagnostic"
+    },
+    {
+      "id": "meld-general-t",
+      "paper_locations": ["sections/appendix_experiments.tex: Table meld-model-based"],
+      "tables": ["canonical_results/meld/general_T_model_based_sharp.csv"],
+      "figures": ["canonical_results/meld/general_T_model_based_intervals.png"],
+      "fold_manifest": "canonical_results/meld/folds/model_based_tuning_manifest.json",
+      "status": "exploratory-model-dependent"
+    }
+  ],
+  "explicit_exclusions": [
+    "CREMA-D analyses not reported in the current manuscript",
+    "raw NHANES PAXRAW minute records and raw CrossCheck continuous measurements",
+    "historical MELD result tables",
+    "raw transcript, audio, video, and high-dimensional features"
+  ]
+}

@@ -1,0 +1,14 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+SPDX-License-Identifier: CC-BY-4.0
+
+The authoritative legal code is available at:
+https://creativecommons.org/licenses/by/4.0/legalcode
+
+A human-readable summary is available at:
+https://creativecommons.org/licenses/by/4.0/
+
+This license is applied only to the paths identified in the repository's
+top-level `LICENSE` file and only to material for which the licensor holds the
+necessary rights. It does not relicense third-party material, public-source
+data, or model outputs.

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "experiments": [
+    {
+      "experiment_id": "sharp-id-simulation-20260901-v1",
+      "purpose": "Population sharp-bound and finite-sample coverage validation",
+      "entry_point": "analysis/run_simulation.py",
+      "config": "config/simulation.json",
+      "input_data": "simulated from frozen DGP",
+      "seed": 20260901,
+      "number_of_runs": 1500,
+      "final_outputs": "canonical_results/simulation",
+      "evaluation": "analysis/verify_simulation_rerun.py"
+    },
+    {
+      "experiment_id": "meld-realdata-reproduction-20260901-v1",
+      "purpose": "Dialogue-grouped next-turn sentiment stress test",
+      "entry_point": "analysis/run_meld_reproduction.py",
+      "config": "config/meld_reproduction.json",
+      "input_data": [
+        "input_data/meld_reanalysis_continuous_features.csv",
+        "input_data/meld_reanalysis_pairs.csv"
+      ],
+      "seed": 20260901,
+      "grouping_unit": "dialogue",
+      "final_outputs": "canonical_results/meld",
+      "evaluation": "analysis/verify_meld_rerun.py"
+    },
+    {
+      "experiment_id": "nhanes-crosscheck-formal-v1",
+      "purpose": "Cluster-aware observable-witness analyses",
+      "entry_point": "analysis/run_empirical_reproduction.R",
+      "config": "config/nhanes_crosscheck_reproduction.R",
+      "input_data": [
+        "input_data/nhanes_analysis_public.csv",
+        "input_data/crosscheck_pairs_public.csv"
+      ],
+      "seed": 2026090501,
+      "bootstrap_replicates": 1000,
+      "permutation_replicates": 1000,
+      "final_outputs": "canonical_results/empirical",
+      "evaluation": "analysis/verify_empirical_rerun.R"
+    },
+    {
+      "experiment_id": "nhanes-positive-floor-diagnostics-v1",
+      "purpose": "Canonical compatibility screen and exploratory representation sensitivity",
+      "entry_point": "analysis/run_nhanes_floor_diagnostics.R",
+      "config": "config/nhanes_crosscheck_reproduction.R",
+      "input_data": "input_data/nhanes_analysis_public.csv",
+      "seed": 2026090502,
+      "bootstrap_replicates": 1000,
+      "final_outputs": "canonical_results/floor_diagnostics",
+      "evaluation": "analysis/verify_empirical_rerun.R"
+    }
+  ],
+  "model_api": null,
+  "formal_prompt": null,
+  "agent_workflow": null,
+  "retry_policy": null,
+  "null_reason": "No generative-model API or agent produces a reported result."
+}

@@ -1,0 +1,56 @@
+{
+  "allow_safe_symlinks": false,
+  "documentation": {
+    "commands": [
+      {
+        "command": "python3 tools/VERIFY_ARCHIVE.py verify --archive <ARCHIVE_PATH> --public",
+        "cwd": ".",
+        "file": "README.md",
+        "id": "verify",
+        "timeout_seconds": 300
+      }
+    ]
+  },
+  "public_disclosure_profile": "minimal",
+  "references": {
+    "json_globs": [
+      "config/*.json",
+      "input_data/*.json",
+      "canonical_results/**/*.json",
+      "manuscript_binding/*.json"
+    ],
+    "markdown_files": [
+      "README.md",
+      "docs/CONTAMINATION_LEAKAGE_REPORT.md",
+      "docs/DATA_LICENSE_AND_PROVENANCE.md",
+      "docs/HASH_INTERLOCK_REPORT.md",
+      "docs/MELD_METHOD_SPEC.md",
+      "docs/NHANES_CROSSCHECK_METHOD_SPEC.md",
+      "docs/REPRODUCTION_PROTOCOL.md",
+      "docs/RELEASE_AUDIT.md",
+      "docs/VALIDATION_APPLICABILITY.md",
+      "docs/UPSTREAM_REPRODUCTION.md"
+    ],
+    "stale_patterns": [
+      "/Users/",
+      "\\\\Users\\\\",
+      "file://",
+      "PROJECT_RELEASE_YYYYMMDD"
+    ]
+  },
+  "release_class": "public",
+  "release_name": "Beyond_Multimodal_Gain_Minimal_Reproduction_v1_9",
+  "schema_version": 1,
+  "source_date_epoch": 315532800,
+  "statistical_claims": [],
+  "tool_contract": {
+    "mandatory_public_checks": [
+      "package_integrity",
+      "documentation",
+      "archive_integrity",
+      "reproducibility"
+    ],
+    "name": "experiment-release",
+    "version": "1.2.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "task": "MELD next-turn official sentiment (3-class)",
+  "n_pairs": 2330,
+  "n_dialogues": 268,
+  "y_mapping": {
+    "negative": 0,
+    "neutral": 1,
+    "positive": 2
+  },
+  "c_definition": "source speaker is one of six major characters × next turn same speaker",
+  "text_clusters": 4,
+  "proxy_clusters": 4,
+  "fit_policy": "TF-IDF/SVD/PCA/K-means fitted on train only; no train/test labels used in transforms",
+  "seed": 20260901,
+  "input_sha256": {
+    "train_compact": "2fc8b0f22e21453fcb74fd5f473ae9af95e5a5991bba4a65b997ecb33ebd49f7",
+    "test_compact": "a76bc68d9a6fdb7ebecb9317e9694b76340efc3e601f01ecf7ff44d7c7347d94",
+    "test_csv": "8d37103938f7067600839fe29d5a114a6cd1bcdafb75bec101e06464c5006888"
+  },
+  "output_sha256": "33252ff4493c9b33d918943c498b75024aec4441a68439f18085c451318c23c7",
+  "content_boundary": "The table contains public MELD indices, discrete clusters, covariates, and labels; transcripts, media, and continuous features are outside this file."
+}

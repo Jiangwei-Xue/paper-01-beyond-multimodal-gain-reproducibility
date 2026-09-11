@@ -1,0 +1,2 @@
+"protocol_version","analysis","confidence_level","canonical_design","interpretation","assumption"
+"nhanes-crosscheck-formal-v1","boundary-safe conservative PSU-block l1 compatibility screen",0.95,"10-year mortality; 4 CPM bins; 4 PAQ180 levels; sex-by-age context","not_rejected means the conservative outer screen cannot reject the restriction; it is not scientific calibration and does not make an incompatible plug-in sharp endpoint estimable","independent PSU blocks with observed normalized PSU masses treated as fixed"

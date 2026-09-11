@@ -1,0 +1,45 @@
+{
+  "code_sha256": "34e2e2f1f72a51fc7ea18a83b33fabdc378ebd18ac013e07c7f078d3269dd72f",
+  "config_sha256": "416d7ed90444f9a57b24fc71d4576de514c922f7382f22e104ca5c2303838514",
+  "locked_numeric_environment": {
+    "matplotlib": "3.8.2",
+    "numpy": "1.26.4",
+    "python": "3.11",
+    "scipy": "1.11.4"
+  },
+  "method_version": "simplex-sharp-id-finite-simulation-v1",
+  "numeric_verification": {
+    "compared_cells": 48,
+    "status": "PASS",
+    "tolerance": 1e-12
+  },
+  "outputs": {
+    "data/simulation_coverage.csv": {
+      "sha256": "3e4e5250712bd571e2849a8eea154429ba7cd0ca552f461f9b525e6e19623241",
+      "size_bytes": 693
+    },
+    "data/simulation_population.csv": {
+      "sha256": "23199010da55e454ef89446b5f7529194b329671cbe03deaaf1f0043163ac704",
+      "size_bytes": 203
+    },
+    "figures/simulation_coverage.png": {
+      "sha256": "d72f1ff46dafc60443d7fa916f74b171fe346b349599153d9cbdd11a1b5d7091",
+      "size_bytes": 63051
+    },
+    "figures/simulation_identification.png": {
+      "sha256": "985f423c64c06a7713266636bb8d5b406db2df2db1ab72a5bcb7903ec3bc13b4",
+      "size_bytes": 59379
+    },
+    "figures/simulation_stability.png": {
+      "sha256": "e6294fe9d5d51940bcc3c22921d5dd0c9309f106616b4d056e151f5a4a48385c",
+      "size_bytes": 83136
+    }
+  },
+  "raster_verification": {
+    "policy": "same dimensions and bounded mean absolute channel difference",
+    "reason": "font stacks and render backends are not scientifically material and need not be byte-identical"
+  },
+  "run_id": "sharp-id-simulation-20260901-v1",
+  "schema_version": 1,
+  "seed": 20260901
+}

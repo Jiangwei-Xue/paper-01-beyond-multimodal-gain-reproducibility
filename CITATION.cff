@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this reproduction package, please cite it and the associated paper."
+title: "Beyond Multimodal Gain: Minimal Reproduction Package"
+type: software
+authors:
+  - family-names: "Xu\u0065"
+    given-names: "Jiangwei"
+    affiliation: "Independent Researcher"
+  - family-names: "Qin"
+    given-names: "Zhida"
+    affiliation: "Independent Researcher"
+  - family-names: "Bi"
+    given-names: "Yuda"
+    affiliation: "TReNDS Center (GSU, GaTech, Emory)"
+version: 1.9.0
+date-released: 2026-09-10
+repository-code: "https://github.com/Jiangwei-Xue/01_beyond-multimodal-gain-reproducibility"
+license:
+  - MIT
+  - CC-BY-4.0
+keywords:
+  - partial identification
+  - multimodal learning
+  - reproducibility
+  - NHANES
+  - MELD
+  - CrossCheck
+abstract: >-
+  Code, compact public inputs, canonical outputs, and verification material for
+  the simulation, NHANES, CrossCheck, and MELD analyses reported in Beyond
+  Multimodal Gain.

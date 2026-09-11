@@ -1,0 +1,22 @@
+{
+  "schema_version": 3,
+  "public_release_id": "bmg-minimal-reproduction-v1.9.0",
+  "method_versions": [
+    "sharp-id-simulation-20260901-v1",
+    "meld-continuous-nested-cv-v1",
+    "nhanes-crosscheck-formal-v1",
+    "nhanes-positive-floor-postcanonical-v1"
+  ],
+  "paper_title": "Beyond Multimodal Gain: Sharp Partial Identification of Task-Relevant Latent-State Information",
+  "paper_included_in_release": true,
+  "paper_path": "paper/Beyond_Multimodal_Gain.pdf",
+  "paper_pdf_sha256": "084eda01edd19e7e73c7b20ee6e51726861ca8f27a38fd93c193c5127b291ed2",
+  "paper_pdf_pages": 41,
+  "paper_author_metadata": "PUBLIC_ATTRIBUTION.json",
+  "source_build_status": "pass",
+  "visible_content_equivalence": "pass",
+  "rendered_page_equivalence": "pass",
+  "result_mapping": "manuscript_binding/PAPER_RESULTS_MAP.json",
+  "release_manifest": "provenance/PUBLIC_RELEASE_MANIFEST.jsonl",
+  "scope_note": "The included PDF is the manuscript artifact bound to this release. The LaTeX source is outside the package. Reported experiments are linked to packaged artifacts through the paper-result map and public SHA-256 manifest."
+}

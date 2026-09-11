@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "reproduction_timezone": "UTC",
+  "tested_runtimes": {
+    "simulation": "Python 3.11.15",
+    "meld": "Python 3.14.5",
+    "empirical": "R 4.6.1 base"
+  },
+  "tested_platform_scope": "macOS on arm64; no broader cross-platform guarantee is made",
+  "native_binaries_in_release": false,
+  "model_or_provider_calls": false,
+  "network_required_for_analysis_after_dependency_installation": false,
+  "notes": "Exact third-party package versions are frozen in the lock files. The reported analysis uses UTC. Optional source acquisition requires network access; reconstruction can use a verified offline source cache.",
+  "upstream_requirements": {
+    "r": "R 4.6.1 with foreign 0.8-91",
+    "compiler": "C compiler compatible with R CMD SHLIB",
+    "python": "same MELD environment",
+    "sources": "upstream/sources.json"
+  }
+}

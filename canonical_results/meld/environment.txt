@@ -1,0 +1,13 @@
+run_id=meld-realdata-reproduction-20260901-v1
+seed=20260901
+outer_folds=5
+inner_folds=4
+n_pairs=2330
+n_dialogues=268
+python=3.14.5
+numpy=2.5.2
+scikit_learn=1.9.0
+reproduction_timezone=UTC
+primary_audio_gain_bits=0.0029283949174266333
+primary_visual_gain_bits=-0.0012522960577876184
+primary_fused_gain_bits=0.0010308207361945708

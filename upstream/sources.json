@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "protocol": "bmg-upstream-reconstruction-v1",
+  "sources": [
+    {
+      "path": "meld/train_sent_emo.csv",
+      "dataset": "meld",
+      "bytes": 1119290,
+      "sha256": "d2fa2d6529cf03cac2989efec05c9b27d8fd2f4c8fc5974c7ae88aa537fa02db",
+      "url": "https://raw.githubusercontent.com/declare-lab/MELD/e8cedf27b5d2877e198332c957127e16eb214afe/data/MELD/train_sent_emo.csv"
+    },
+    {
+      "path": "meld/test_sent_emo.csv",
+      "dataset": "meld",
+      "bytes": 294526,
+      "sha256": "8d37103938f7067600839fe29d5a114a6cd1bcdafb75bec101e06464c5006888",
+      "url": "https://raw.githubusercontent.com/declare-lab/MELD/e8cedf27b5d2877e198332c957127e16eb214afe/data/MELD/test_sent_emo.csv"
+    },
+    {
+      "path": "meld/train.pkl",
+      "dataset": "meld",
+      "bytes": 1655448302,
+      "sha256": "c4d045d213eb63f650299c9814c463d79b728f0fa9f5df47ef059aac268b3ad5",
+      "archive": "mmalign",
+      "member_basename": "train.pkl"
+    },
+    {
+      "path": "meld/test.pkl",
+      "dataset": "meld",
+      "bytes": 446706405,
+      "sha256": "5cefd7e8471702eab6a0bfcc22403aa7e319e234de74938a9ca07b6ecaef41ad",
+      "archive": "mmalign",
+      "member_basename": "test.pkl"
+    },
+    {
+      "path": "crosscheck/crosscheck_daily_data_cleaned_w_sameday.csv",
+      "dataset": "crosscheck",
+      "bytes": 9791805,
+      "sha256": "a0299b7d1cc669ab9f47b1683e2eb3a7ebddb293e4bcac29533a25574a89b039",
+      "url": "https://raw.githubusercontent.com/CornellPACLab/data_heterogeneity/21a765b03b3b4b86a7f0c5888a80390d24178b99/data/crosscheck_daily_data_cleaned_w_sameday.csv"
+    },
+    {
+      "path": "nhanes/2003-2004/DEMO_C.xpt",
+      "dataset": "nhanes",
+      "bytes": 3569840,
+      "sha256": "2a2fdb88263337bfa06f0516bfb419631595f0a0ee88fb96069bed13d1857c6f",
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2003/DataFiles/DEMO_C.xpt"
+    },
+    {
+      "path": "nhanes/2003-2004/PAQ_C.xpt",
+      "dataset": "nhanes",
+      "bytes": 1488000,
+      "sha256": "085928dcff32acc98efc8d1d30eeceb022b56d6ab565e0572251a325a576c765",
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2003/DataFiles/PAQ_C.xpt"
+    },
+    {
+      "path": "nhanes/2003-2004/NHANES_2003_2004_MORT_2019_PUBLIC.dat",
+      "dataset": "nhanes",
+      "bytes": 495722,
+      "sha256": "639f6b3292a55b112fbfc842954af3d8d32bcce287cd8ae49319e5aca1c033c0",
+      "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/datalinkage/linked_mortality/NHANES_2003_2004_MORT_2019_PUBLIC.dat"
+    },
+    {
+      "path": "nhanes/2003-2004/PAXRAW_C.xpt",
+      "dataset": "nhanes",
+      "bytes": 2528752800,
+      "sha256": "38de4bf81c6379b0446cd5e2ddeb4c1114d8b555cfccb837859633e9086e6790",
+      "archive": "paxraw_c",
+      "member_basename": "PAXRAW_C.xpt"
+    },
+    {
+      "path": "nhanes/2005-2006/DEMO_D.xpt",
+      "dataset": "nhanes",
+      "bytes": 3566560,
+      "sha256": "bf9cc79cce501b2fbe5aa8d5b403b618548d02d4aefeb528335cdd9f4c40a3af",
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2005/DataFiles/DEMO_D.xpt"
+    },
+    {
+      "path": "nhanes/2005-2006/PAQ_D.xpt",
+      "dataset": "nhanes",
+      "bytes": 1511360,
+      "sha256": "a2c21b90a964aaa08a854d66526b29a1a7ad009d8a26c3cc9a8c18bf70f0c0aa",
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2005/DataFiles/PAQ_D.xpt"
+    },
+    {
+      "path": "nhanes/2005-2006/NHANES_2005_2006_MORT_2019_PUBLIC.dat",
+      "dataset": "nhanes",
+      "bytes": 506774,
+      "sha256": "69388ea13a4f395f29d9d21bc51941b9759003490d4b00f6ff12a1bc5f8dba5c",
+      "url": "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/datalinkage/linked_mortality/NHANES_2005_2006_MORT_2019_PUBLIC.dat"
+    },
+    {
+      "path": "nhanes/2005-2006/PAXRAW_D.xpt",
+      "dataset": "nhanes",
+      "bytes": 2994965840,
+      "sha256": "b8f5184e8e7243ee3cbad5e1c099acef79c3357c4097bcf70563bfd2d5d733c9",
+      "archive": "paxraw_d",
+      "member_basename": "PAXRAW_D.xpt"
+    }
+  ],
+  "archives": {
+    "mmalign": {
+      "url": "https://drive.usercontent.google.com/download?id=1RjrYSMpXxg_6r_nUQaysaPyMsldLpMcb&export=download&confirm=t",
+      "bytes": 2293780480,
+      "sha256": "9adb1c9a9045e6bf3f58875946668f854bc45c3db799986c483b043a2ab1c853",
+      "format": "tar",
+      "source_commit": "e2448590b3d9b308350515bcb147526f4baa6ac7"
+    },
+    "paxraw_c": {
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2003/DataFiles/PAXRAW_C.zip",
+      "bytes": 427543657,
+      "sha256": "51cddc4254fd970599ed12b019876b1106a9d981eb631c2b4cdc0e0509f4cdb7",
+      "format": "zip"
+    },
+    "paxraw_d": {
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2005/DataFiles/PAXRAW_D.zip",
+      "bytes": 470990068,
+      "sha256": "becdf05e0d0ee2c4615f8e544c0e2c76fd2e8a498591eaf82777e171eb748bd9",
+      "format": "zip"
+    }
+  },
+  "boundaries": [
+    "MELD begins at published pretrained features; neural feature extraction from media is outside this workflow.",
+    "CrossCheck begins at the authors' cleaned daily table; raw phone sensing to daily-table cleaning is outside this workflow.",
+    "NHANES begins at official public-use minute, questionnaire, demographic and mortality data."
+  ]
+}

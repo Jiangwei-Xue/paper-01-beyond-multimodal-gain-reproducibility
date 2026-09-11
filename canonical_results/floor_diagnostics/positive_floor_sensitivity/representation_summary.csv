@@ -1,0 +1,4 @@
+"design_id","description","n","deaths","report_levels","proxy_bins","context_strata","plugin_witness_bits","bootstrap_bias_corrected_bits","ci_lower","ci_upper","bootstrap_replicates"
+"C1_M2_T4","Four-level PAQ report, two-bin accelerometer proxy, no context stratification",6565,903,4,2,1,0.0349048889324322,0.0345974893729314,0.0274399928922352,0.0408356507897884,1000
+"age2_M2_T4","Four-level PAQ report, two-bin accelerometer proxy, age-group context",6565,903,4,2,2,0.00931938944898363,0.00877231363754824,0.00485599233910731,0.0119045148653408,1000
+"C4_M2_T2","Two-level PAQ report, two-bin accelerometer proxy, sex-by-age context",6565,903,2,2,4,0.0123555417926148,0.0118152181231373,0.00825586047252261,0.0151225022108126,1000
