@@ -71,7 +71,7 @@ canonical_results/empirical/
 canonical_results/floor_diagnostics/
                           NHANES boundary and sensitivity tables
 manuscript_binding/       paper location to result-artifact mapping
-paper/                    exact manuscript PDF; author copyright retained
+paper/                    exact manuscript PDF and manuscript license notice
 docs/                     design, methods, protocol, provenance, and validation
 provenance/               public scientific artifact manifest and checksums
 LICENSES/                 license texts and authoritative references
@@ -115,14 +115,17 @@ This repository uses layered licensing:
 - project documentation and author-generated derived result artifacts:
   **CC BY 4.0**;
 - analysis code and executable configuration: **MIT License**;
-- the manuscript PDF under `paper/`: author copyright retained;
+- the author-owned manuscript text, LaTeX source, tables, and original figures:
+  **CC BY 4.0**; and
 - third-party libraries, public-source data, derived compact inputs, and any
   model outputs: their original terms apply.
 
 See [`LICENSE`](LICENSE) and
+[`paper/LICENSE.md`](paper/LICENSE.md) for the manuscript-specific notice, and
 [`docs/DATA_LICENSE_AND_PROVENANCE.md`](docs/DATA_LICENSE_AND_PROVENANCE.md) for
-the exact path-level scope. No license in this repository expands upstream
-rights.
+the data and provenance boundaries. These licenses apply to different
+materials; they are not alternative licenses for the repository as a whole.
+No license in this repository expands upstream rights.
 
 ## Formal archive verification
 

@@ -14,6 +14,7 @@ The MIT License applies to:
 - `tools/`
 - `config/`
 - `Makefile`
+- `PUBLIC_RELEASE_CONFIG.json`
 - `requirements*.txt`
 - `.gitignore` and `.gitattributes`
 
@@ -29,16 +30,21 @@ CC BY 4.0 applies, to the extent the author holds the relevant rights, to:
 - `manuscript_binding/`
 - `provenance/` author-generated reports and manifests
 - `CITATION.cff` and `PUBLIC_ATTRIBUTION.json`
+- `paper/Beyond_Multimodal_Gain.pdf`, including its author-owned text,
+  equations, tables, and original figures
+- author-owned LaTeX manuscript source and original manuscript figures under
+  `paper/`, when such files are distributed in this repository
 - generated release metadata, to the extent copyright applies
 
-The license reference is in `LICENSES/CC-BY-4.0.txt`.
+The full license text is in `LICENSES/CC-BY-4.0.txt`. The manuscript-specific
+notice is in `paper/LICENSE.md`.
 
-## Manuscript
+## Manuscript attribution
 
-The manuscript PDF at `paper/Beyond_Multimodal_Gain.pdf` is included for
-reference and result binding. All manuscript rights are retained by its
-authors. Neither the MIT License nor CC BY 4.0 applies to that PDF unless a
-separate notice expressly says otherwise.
+Copyright (c) 2026 Jiangwei Xue, Zhida Qin, and Yuda Bi. The author-owned
+manuscript material listed above is licensed under CC BY 4.0. This grant does
+not cover third-party material incorporated in or cited by the manuscript to
+the extent the authors do not hold the rights to license it.
 
 ## Third-party material and public-source data
 
@@ -49,3 +55,7 @@ transformed data do not automatically become relicensed under CC BY 4.0.
 
 If a file-specific or upstream notice conflicts with this mapping, that more
 specific notice controls.
+
+The licenses apply to different materials by path and provenance. They are not
+alternative licenses from which a user may choose for the repository as a
+whole.

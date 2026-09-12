@@ -74,10 +74,15 @@ def lineage(path: str) -> tuple[list[str], str | None]:
 
 
 def license_for(path: str, role: str) -> str:
-    if path.startswith("upstream/") or path.startswith("analysis/") or path.startswith("config/") or path == "Makefile" or path.startswith("requirements"):
+    if (
+        path.startswith(("upstream/", "analysis/", "config/", "requirements"))
+        or path in {
+            "Makefile", "PUBLIC_RELEASE_CONFIG.json", ".gitignore", ".gitattributes",
+        }
+    ):
         return "MIT"
     if path.startswith("paper/"):
-        return "author-copyright"
+        return "CC-BY-4.0"
     if path.startswith("input_data/") or path.startswith("third_party/"):
         return "upstream-terms"
     if path.startswith("LICENSES/"):

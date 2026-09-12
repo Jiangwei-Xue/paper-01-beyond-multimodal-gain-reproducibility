@@ -38,10 +38,14 @@ The top-level `LICENSE` file is controlling for package-authored material:
 - project documentation and author-generated derived result artifacts use
   CC BY 4.0;
 - analysis code and executable configuration use the MIT License;
-- the manuscript PDF under `paper/` is included for reference and retains
-  author copyright; and
+- the author-owned manuscript text, LaTeX source, tables, and original figures
+  use CC BY 4.0, as specified in `paper/LICENSE.md`; and
 - third-party libraries, public-source data, compact inputs derived from them,
   and model outputs remain governed by their original terms.
+
+These licenses apply to different materials by path and provenance. They are
+not alternative licenses for the repository as a whole. Copyright (c) 2026
+Jiangwei Xue, Zhida Qin, and Yuda Bi for the author-owned manuscript material.
 
 The MELD repository at the frozen commit includes a GNU GPL v3 license file. A
 copy is retained under `third_party/MELD_LICENSE_GPL-3.0.txt` for notice.

@@ -39,6 +39,7 @@ def main() -> int:
         "README.md", "LICENSE", "CITATION.cff", "PUBLIC_ATTRIBUTION.json",
         "PUBLIC_ENVIRONMENT.json", "PUBLIC_RELEASE_CONFIG.json",
         "paper/Beyond_Multimodal_Gain.pdf",
+        "paper/LICENSE.md",
         "docs/EXPERIMENT_DESIGN.md", "docs/REPRODUCTION_PROTOCOL.md",
         "docs/VALIDATION_APPLICABILITY.md", "docs/RELEASE_AUDIT.md",
         "docs/DATA_LICENSE_AND_PROVENANCE.md",
@@ -60,9 +61,35 @@ def main() -> int:
         if not (root / relative).is_file():
             failures.append(f"missing required file: {relative}")
 
+    license_scope = (root / "LICENSE").read_text(encoding="utf-8")
+    paper_license = (root / "paper/LICENSE.md").read_text(encoding="utf-8")
+    cc_legal = (root / "LICENSES/CC-BY-4.0.txt").read_text(encoding="utf-8")
+    citation = (root / "CITATION.cff").read_text(encoding="utf-8")
+    if not all(token in license_scope for token in [
+        "paper/Beyond_Multimodal_Gain.pdf", "CC BY 4.0", "MIT License",
+        "alternative licenses",
+    ]):
+        failures.append("layered license scope is incomplete")
+    if not all(token in paper_license for token in [
+        "Jiangwei Xue, Zhida Qin, and Yuda Bi", "CC BY 4.0",
+        "third-party", "paper/Beyond_Multimodal_Gain.pdf",
+    ]):
+        failures.append("paper license notice is incomplete")
+    if not all(token in cc_legal for token in [
+        "Creative Commons Attribution 4.0 International Public License",
+        "Section 1 -- Definitions.", "Section 8 -- Interpretation.",
+        "https://creativecommons.org/licenses/by/4.0/legalcode.txt",
+    ]):
+        failures.append("CC BY 4.0 legal text is incomplete")
+    if "  - MIT" not in citation or "  - CC-BY-4.0" not in citation:
+        failures.append("citation metadata omits layered license identifiers")
+
     release_config = load_json(root / "PUBLIC_RELEASE_CONFIG.json")
     if release_config.get("public_release_id") != "bmg-minimal-reproduction-v1.9.0":
         failures.append("public release identity mismatch")
+    allowlisted = {item["source"] for item in release_config.get("allowlist", [])}
+    if "paper/LICENSE.md" not in allowlisted:
+        failures.append("paper license notice is not release-allowlisted")
 
     binding = load_json(root / "manuscript_binding/LOCAL_PAPER_BINDING.json")
     paper = root / binding["paper_path"]
@@ -137,8 +164,15 @@ def main() -> int:
     if public_manifest.is_file():
         rows = [json.loads(line) for line in public_manifest.read_text(encoding="utf-8").splitlines() if line]
         path_set = {row["path"] for row in rows}
+        license_by_path = {row["path"]: row.get("license") for row in rows}
         if len(rows) != len(path_set):
             failures.append("duplicate package manifest path")
+        if license_by_path.get("paper/Beyond_Multimodal_Gain.pdf") != "CC-BY-4.0":
+            failures.append("paper PDF license mapping mismatch")
+        if license_by_path.get("paper/LICENSE.md") != "CC-BY-4.0":
+            failures.append("paper notice license mapping mismatch")
+        if license_by_path.get("PUBLIC_RELEASE_CONFIG.json") != "MIT":
+            failures.append("executable release configuration license mismatch")
         for row in rows:
             target = root / row["path"]
             if not target.is_file() or sha256(target) != row["sha256"]:

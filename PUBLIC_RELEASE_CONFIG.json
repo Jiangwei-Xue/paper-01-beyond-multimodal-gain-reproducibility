@@ -89,6 +89,11 @@
       "role": "reference-manuscript"
     },
     {
+      "source": "paper/LICENSE.md",
+      "target": "paper/LICENSE.md",
+      "role": "manuscript-license"
+    },
+    {
       "source": "requirements.txt",
       "target": "requirements.txt",
       "role": "meld-environment-specification"
