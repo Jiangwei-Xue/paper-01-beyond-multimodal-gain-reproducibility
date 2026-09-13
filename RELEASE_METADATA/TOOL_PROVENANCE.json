@@ -1,7 +1,7 @@
 {
-  "release_core_sha256": "468b5d332a69e4090d19c5412957b7d803373bc11262906a92db4520fa15b399",
+  "release_core_sha256": "50138f9554b43de08def7d4a78accdcec56e1406e3417db51d9986edc0837eac",
   "source_path_recorded": false,
   "tool": "experiment-release",
   "verifier_cli_sha256": "19f0648b53022b315cde7512c9d87495ee0222cc18897ba1e100c08cd0011b66",
-  "version": "1.2.0"
+  "version": "1.2.2"
 }

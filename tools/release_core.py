@@ -33,7 +33,7 @@ from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any, Iterable, Iterator, Sequence
 
 
-TOOL_VERSION = "1.2.0"
+TOOL_VERSION = "1.2.2"
 SCHEMA_VERSION = 1
 METADATA_DIR = "RELEASE_METADATA"
 MANIFEST_PATH = f"{METADATA_DIR}/RELEASE_MANIFEST.jsonl"
@@ -599,7 +599,15 @@ def _privacy_patterns() -> dict[str, re.Pattern[bytes]]:
         "privacy.posix_tmp": re.compile(rb"/t[m]p/(?:[A-Za-z0-9]|\.[A-Za-z0-9])"),
         "privacy.windows_home_backslash": re.compile(rb"[A-Za-z]:\\Users\\[A-Za-z0-9._ -]+\\"),
         "privacy.windows_home_slash": re.compile(rb"[A-Za-z]:/Users/[A-Za-z0-9._ -]+/"),
-        "privacy.windows_drive": re.compile(rb"(?<![A-Za-z0-9])[A-Za-z]:\\(?!\\)(?!Users\\<)"),
+        # A drive prefix alone occurs frequently by chance inside compressed
+        # binary streams. Require two printable path segments so ordinary
+        # absolute paths (for example D:\\dataset\\file.json) remain blocked
+        # without treating arbitrary PDF stream bytes as machine paths.
+        "privacy.windows_drive": re.compile(
+            rb"(?<![A-Za-z0-9])[A-Za-z]:\\(?!\\)(?!Users\\<)"
+            rb"(?=[A-Za-z0-9._ -]{1,128}\\[A-Za-z0-9._ -]{1,128}"
+            rb"(?:\\|(?=[\x00\s\"']|$)))"
+        ),
         "privacy.unc_path": re.compile(rb"\\\\[A-Za-z0-9._-]+\\[A-Za-z0-9$._ -]+\\"),
         "privacy.ci_workspace": re.compile(rb"/(?:__w|github/workspace|builds|workspace)/[A-Za-z0-9._/-]+"),
     }
@@ -644,27 +652,60 @@ def scan_bytes_patterns(path: Path, patterns: dict[str, re.Pattern[bytes]], rela
     return findings
 
 
+def contextual_runtime_identity_pattern(token: str, *, identity_kind: str) -> re.Pattern[bytes]:
+    """Match an ephemeral runtime identity only in machine-identity contexts.
+
+    A login name can also be a legitimate author surname, place name, acronym,
+    or scientific token.  Treating the bare token as private identity therefore
+    corrupts attribution and creates host-dependent verification results.  The
+    generic path detectors remain authoritative for home/workspace paths; this
+    supplemental detector covers explicit environment and metadata contexts.
+    """
+    encoded = re.escape(token.encode("utf-8", errors="ignore"))
+    right_boundary = rb"(?![A-Za-z0-9_.-])"
+    if identity_kind == "user":
+        alternatives = (
+            rb"\b(?:USER|USERNAME|LOGNAME|LOGIN|OWNER|ACCOUNT)\b[ \t]*[:=][ \t]*['\"]?"
+            + encoded
+            + right_boundary,
+            rb"/(?:Users|home)/" + encoded + rb"(?=[/\\])",
+            rb"[A-Za-z]:\\Users\\" + encoded + rb"(?=\\)",
+        )
+    elif identity_kind == "hostname":
+        alternatives = (
+            rb"\b(?:HOST|HOSTNAME|MACHINE|NODE|NODENAME)\b[ \t]*[:=][ \t]*['\"]?"
+            + encoded
+            + right_boundary,
+        )
+    else:
+        raise ValueError(f"unsupported runtime identity kind: {identity_kind}")
+    return re.compile(rb"(?:" + rb"|".join(alternatives) + rb")", re.IGNORECASE)
+
+
 def dynamic_identity_patterns(source_root: Path | None = None) -> dict[str, re.Pattern[bytes]]:
     patterns: dict[str, re.Pattern[bytes]] = {}
-    tokens: list[tuple[str, str]] = []
     try:
-        tokens.append(("privacy.runtime_user", Path.home().name))
+        user = Path.home().name
+        if user and len(user) >= 3:
+            patterns["privacy.runtime_user"] = contextual_runtime_identity_pattern(
+                user,
+                identity_kind="user",
+            )
     except RuntimeError:
         pass
     try:
-        tokens.append(("privacy.runtime_hostname", socket.gethostname().split(".")[0]))
+        host = socket.gethostname().split(".")[0]
+        if host and len(host) >= 3:
+            patterns["privacy.runtime_hostname"] = contextual_runtime_identity_pattern(
+                host,
+                identity_kind="hostname",
+            )
     except OSError:
         pass
     if source_root is not None:
-        tokens.append(("privacy.runtime_workspace", str(source_root.resolve())))
-    for rule, token in tokens:
-        if not token or len(token) < 3:
-            continue
-        encoded = re.escape(token.encode("utf-8", errors="ignore"))
-        if rule.endswith("workspace"):
-            patterns[rule] = re.compile(encoded)
-        else:
-            patterns[rule] = re.compile(rb"(?<![A-Za-z0-9_.-])" + encoded + rb"(?![A-Za-z0-9_.-])", re.IGNORECASE)
+        workspace = str(source_root.resolve())
+        if workspace:
+            patterns["privacy.runtime_workspace"] = re.compile(re.escape(workspace.encode("utf-8")))
     return patterns
 
 
@@ -684,18 +725,10 @@ def sanitization_patterns(source_root: Path) -> list[tuple[str, re.Pattern[bytes
     root_bytes = str(source_root.resolve()).encode("utf-8")
     if root_bytes:
         patterns.insert(0, ("project_root", re.compile(re.escape(root_bytes)), b"<PROJECT_ROOT>"))
-    try:
-        user = Path.home().name.encode("utf-8")
-        if len(user) >= 3:
-            patterns.append(("runtime_user", re.compile(rb"(?<![A-Za-z0-9_.-])" + re.escape(user) + rb"(?![A-Za-z0-9_.-])", re.IGNORECASE), b"<LOCAL_USER>"))
-    except RuntimeError:
-        pass
-    try:
-        host = socket.gethostname().split(".")[0].encode("utf-8")
-        if len(host) >= 3:
-            patterns.append(("runtime_hostname", re.compile(rb"(?<![A-Za-z0-9_.-])" + re.escape(host) + rb"(?![A-Za-z0-9_.-])", re.IGNORECASE), b"<HOSTNAME>"))
-    except OSError:
-        pass
+    # Do not rewrite bare runtime user or host tokens.  They may be legitimate
+    # scientific or attribution text.  Explicit paths are handled above, while
+    # contextual runtime-identity residue is rejected by the privacy gate so it
+    # can be corrected deliberately rather than silently altering content.
     return patterns
 
 
